@@ -1,10 +1,19 @@
 public class Lists1Exercises {
+
     /** Returns an IntList identical to L, but with
       * each element incremented by x. L is not allowed
       * to change. */
     public static IntList incrList(IntList L, int x) {
         /* Your code here. */
-        return L;        
+        int size = L.size();
+        IntList Q = new IntList(0,null);
+        IntList P = new IntList(L.get(size-1)+x, null);
+        for (int i = size-1; i>0; i = i-1) {
+            int firstElement = L.get(i - 1)+x;
+            Q = new IntList(firstElement, P);
+            P = Q;
+        }
+        return Q;
     }
 
     /** Returns an IntList identical to L, but with
@@ -23,11 +32,12 @@ public class Lists1Exercises {
         System.out.println(L.size());
         System.out.println(L.iterativeSize());
 
-        // Test your answers by uncommenting. Or copy and paste the
-        // code for incrList and dincrList into IntList.java and
-        // run it in the visualizer.
-        // System.out.println(L.get(1));
-        // System.out.println(incrList(L, 3));
-        // System.out.println(dincrList(L, 3));        
+         //Test your answers by uncommenting. Or copy and paste the
+         //code for incrList and dincrList into IntList.java and
+         //run it in the visualizer.
+         System.out.println(L.get(1));
+         System.out.println(incrList(L, 3));
+         System.out.println(dincrList(L, 3));
+         System.out.println(incrList(L, 3).get(1));
     }
 }
